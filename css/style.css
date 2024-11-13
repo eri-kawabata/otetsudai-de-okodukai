@@ -1,9 +1,9 @@
-/* 基本設定 */
+/* 全体の基本設定 */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Comic Sans MS', 'Arial', sans-serif;
+    box-sizing: border-box; /* box-sizing を border-box にすると、幅や高さの計算がしやすくなる */
+    font-family: 'Arial', sans-serif;
 }
 
 /* 背景のグラデーション */
