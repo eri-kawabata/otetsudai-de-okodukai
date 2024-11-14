@@ -1,12 +1,12 @@
 // タスクに応じたアイコンを取得する関数
-// 入力された「タスクの名前」に応じて、表示するアイコンの画像を決定します
+// タスクの内容に応じてアイコンの画像を表示する
 function getTaskIcon(taskName) {
     if (taskName === "掃除") return './image/souji.png';
     if (taskName === "料理") return './image/ryori.png';
     if (taskName === "片付け") return './image/kataduke.png';
     if (taskName === "洗濯") return './image/sentaku.png';
     if (taskName === "買い物") return './image/kaimono.png';
-    return './image/default.png'; // それ以外のタスクの場合はデフォルトのアイコンを表示,一応設定
+    return './image/default.png'; // それ以外のタスクの場合はデフォルトのアイコンを表示,今後のため一応設定
 }
 
 // 全体の変数を設定
@@ -44,7 +44,7 @@ function updateTaskList() {
     tasks.forEach((task, index) => {
         const taskCard = document.createElement('div');
         taskCard.classList.add('task-card');
-        const iconSrc = getTaskIcon(task.name);
+        const iconSrc = getTaskIcon(task.name);  // タスク名に対応するアイコンを取得
         taskCard.innerHTML = `
             <img src="${iconSrc}" alt="${task.name} icon" class="task-icon">
             <span>${task.name} - ${task.reward}円</span>
@@ -52,42 +52,43 @@ function updateTaskList() {
                 <img src="./image/check.png" alt="完了" class="task-icon"> おわった！
             </span>
         `;
-        taskList.appendChild(taskCard);
+        taskList.appendChild(taskCard);  // タスクリストにカードを追加
     });
 }
 
 // タスクを完了リストに移動し、完了日を追加
 function completeTask(index) {
-    const task = tasks.splice(index, 1)[0];
+    const task = tasks.splice(index, 1)[0];  // 未完了のタスクから削除
     const completionDate = new Date(); // 現在の日付を取得
     task.completedDate = completionDate.toLocaleDateString('ja-JP'); // 完了日を追加
 
-    completedTasks.push(task);
-    totalEarnings += task.reward;
+    completedTasks.push(task);  // 完了済みタスクリストに追加
+    totalEarnings += task.reward;   // 合計おこづかいを更新
 
-    showCompletionMessage();
-    saveData();
-    updateTaskList();
-    updateCompletedTaskList();
-    updateTotalEarnings();
-    updateAnnualEarnings();
+    showCompletionMessage();  // 完了メッセージを表示
+    saveData();  // データを保存
+    updateTaskList();  // 未完了タスクリストを更新
+    updateCompletedTaskList();  // 完了タスクリストを更新
+    updateTotalEarnings();  // 合計おこづかい表示を更新
+    updateAnnualEarnings();  // 年間おこづかいを更新
 }
 
-// 完了リストの更新
+// 完了したタスクリストを画面に表示する関数
 function updateCompletedTaskList() {
     const completedTaskList = document.getElementById('completed-task-list');
-    completedTaskList.innerHTML = '';
+    completedTaskList.innerHTML = '';  // 表示エリアをクリア
 
+    // 各完了タスクのカードを表示
     completedTasks.forEach(task => {
         const taskCard = document.createElement('div');
         taskCard.classList.add('completed-task-card');
-        
-        // タスク名（タイトル）を設定
+
+        // タスク名のタイトルを追加
         const taskTitle = document.createElement('div');
         taskTitle.classList.add('completed-task-title');
         taskTitle.textContent = `${task.name}`;
-        
-        // 完了日と報酬の表示
+
+        // 完了日とおこづかいの表示を追加
         const taskDetails = document.createElement('div');
         taskDetails.classList.add('completed-task-details');
         taskDetails.innerHTML = `
@@ -95,16 +96,16 @@ function updateCompletedTaskList() {
             <span>おこづかい: ${task.reward}円</span>
         `;
 
-        taskCard.appendChild(taskTitle);
-        taskCard.appendChild(taskDetails);
-        completedTaskList.appendChild(taskCard);
+        taskCard.appendChild(taskTitle);  // タスクタイトルをカードに追加
+        taskCard.appendChild(taskDetails);  // 詳細をカードに追加
+        completedTaskList.appendChild(taskCard);  // 完了済みタスクリストにカードを追加
     });
 }
 
 // 完了メッセージを表示する関数
 function showCompletionMessage() {
     const message = document.getElementById('completion-message');
-    message.style.display = 'flex';
+    message.style.display = 'flex'; // メッセージを表示
 
     // 1秒後に自動で非表示にする
     setTimeout(() => {
@@ -114,9 +115,9 @@ function showCompletionMessage() {
 
 // データをローカルストレージに保存
 function saveData() {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-    localStorage.setItem('completedTasks', JSON.stringify(completedTasks));
-    localStorage.setItem('totalEarnings', totalEarnings);
+    localStorage.setItem('tasks', JSON.stringify(tasks));  // 未完了タスクを保存
+    localStorage.setItem('completedTasks', JSON.stringify(completedTasks)); // 完了タスクを保存
+    localStorage.setItem('totalEarnings', totalEarnings);  // 合計おこづかいを保存
 }
 
 // データをローカルストレージから読み込む
@@ -125,19 +126,20 @@ function loadData() {
     const savedCompletedTasks = JSON.parse(localStorage.getItem('completedTasks') || '[]');
     const savedTotalEarnings = parseInt(localStorage.getItem('totalEarnings') || '0');
 
-    tasks = savedTasks;
+    tasks = savedTasks;  // 未完了タスクリストを復元
     completedTasks = savedCompletedTasks.map(task => {
+        // 完了日がない場合は現在の日付を設定
         if (!task.completedDate) {
             task.completedDate = new Date().toLocaleDateString('ja-JP');
         }
         return task;
     });
-    totalEarnings = savedTotalEarnings;
+    totalEarnings = savedTotalEarnings;  // 合計おこづかいを復元
 
-    updateTaskList();
-    updateCompletedTaskList();
-    updateTotalEarnings();
-    updateAnnualEarnings();
+    updateTaskList();  // 未完了タスクリストを更新
+    updateCompletedTaskList();  // 完了済みタスクリストを更新
+    updateTotalEarnings();  // 合計おこづかいを更新
+    updateAnnualEarnings();  // 年間おこづかいを更新
 }
 
 // 合計おこづかいを更新
@@ -164,6 +166,7 @@ window.onload = () => {
     displayCurrentMonth();
 };
 
+// テーマを変更する関数
 function changeTheme() {
     const theme = document.getElementById('theme').value;
     document.body.className = ''; // 現在のテーマクラスをリセット
@@ -175,8 +178,8 @@ function changeTheme() {
 
 // ページ読み込み時に保存されたテーマを適用
 window.onload = () => {
-    loadData();
-    displayCurrentMonth();
+    loadData();    // データを読み込み
+    displayCurrentMonth();   // 現在の月を表示
 
     const savedTheme = localStorage.getItem('selectedTheme') || 'default';
     document.getElementById('theme').value = savedTheme;
