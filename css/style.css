@@ -2,7 +2,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* 幅や高さの計算をしやすくする */
     font-family: 'Arial', sans-serif;
 }
 
@@ -13,11 +13,11 @@
     background-color: #ffffffbe;
     color: rgb(80, 165, 255);
     border: none;
-    cursor: pointer;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 1000;
+    cursor: pointer; /* マウスを乗せると指の形になる */
+    position: fixed; /* ボタンを画面上の決まった位置に固定 */
+    top: 10px; /* 画面上から10pxの位置に配置 */
+    left: 10px; /* 画面左から10pxの位置に配置 */
+    z-index: 1000; /* レイヤーの順番を最前面に */
 }
 
 /* メニューボタンのホバー時のスタイル */
@@ -28,50 +28,52 @@
 
 /* サイドメニューのスタイル */
 .side-menu {
-    position: fixed;
-    left: -250px;
-    top: 0;
-    width: 250px;
-    height: 100%;
+    position: fixed; /* サイドメニューの位置を画面に固定 */
+    left: -230px; /* 初期状態で画面の外に隠れるようにする */
+    top: 0; /* 上端に配置 */
+    width: 230px; /* メニューの幅を230pxに設定 */
+    height: 100%; /* 高さを画面全体の高さに設定 */
     background-color: #333333d0;
     color: white;
-    overflow-y: auto;
-    transition: left 0.3s ease;
-    z-index: 999;
-    padding-top: 20px;
+    overflow-y: auto; /* メニューが長くなった時にスクロール可能にする */
+    transition: left 0.3s ease; /* メニューを表示する際にスライドするアニメーション */
+    z-index: 999; /* メニューを他の要素の上に表示 */
+    padding-top: 30px; /* メニューの上端に30pxの余白 */
 }
 
 /* サイドメニューが表示されるとき */
 .side-menu.open {
-    left: 0;
+    left: 0; /* 左端にスライドインさせる */
 }
 
 /* メニューを閉じるボタン */
 .close-btn {
     font-size: 20px;
     color: white;
-    background: none;
-    border: none;
-    cursor: pointer;
+    background: none; /* 背景色をなくす */
+    border: none; /* ボタンの枠線を消す */
+    cursor: pointer; /* マウスを乗せると指の形になる */
     margin-left: 10px;
-    display: block;
+    display: block; /* ブロック要素として表示 */
 }
 
 /* メニュー項目のスタイル */
 .menu-item {
-    display: flex;
-    align-items: center;
+    display: flex; /* アイコンとテキストを横並びにする */
+    align-items: center; /* アイコンとテキストを縦方向に中央揃え */
     padding: 15px;
     color: white;
-    text-decoration: none;
+    text-decoration: none; /* リンクの下線をなくす */
     font-size: 18px;
-    transition: background 0.3s;
+    transition: background 0.3s; /* 背景色が0.3秒で変わるようにする */
 }
 
+/* メニュー項目のホバー時のスタイル */
 .menu-item:hover {
     background-color: #555;
 }
 
+/* メニュー項目内のアイコンのスタイル */
 .menu-item i {
     margin-right: 10px;
     font-size: 20px;
@@ -80,13 +82,14 @@
 /* 全体のスタイル設定 */
 body {
     color: #333;
-    display: flex;
+    display: flex; /* フレックスボックスで中央配置をする */
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    margin: 10px;
+    min-height: 100vh; /* ページの高さを画面全体に合わせる */
+    margin: 10px; /* ページ全体に10pxの余白 */
 }
 
+/* グラデーションのアニメーション */
 @keyframes gradientBG {
     0% {
         background-position: 0% 50%;
@@ -103,21 +106,23 @@ body {
 
 /* メインコンテナ */
 .container {
-    width: 100%;
-    max-width: 600px;
+    width: 100%; /* 横幅を100%に設定 */
+    max-width: 600px; /* 最大幅を600pxに設定 */
     background-color: #ffffffce;
     padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 15px; /* 角を丸くする */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* 少し影をつけて立体的に見せる */
     text-align: center;
 }
 
+/* メインタイトルのスタイル */
 h1 {
     font-size: 28px;
     color: #ff6f69;
     margin-bottom: 20px;
 }
 
+/* 見出しのスタイル */
 h2 {
     font-size: 20px;
     color: #ffcc5c;
@@ -125,6 +130,7 @@ h2 {
     margin-bottom: 10px;
 }
 
+/* 年間のおこづかい合計と今月の表示エリア */
 .annual-earnings,
 .current-month {
     font-size: 18px;
@@ -134,18 +140,18 @@ h2 {
 
 /* タスク入力フォーム */
 .task-form {
-    display: flex;
-    gap: 10px;
+    display: flex; /* 横並びで配置 */
+    gap: 10px; /* 各入力要素の間隔を10pxに設定 */
     margin-bottom: 20px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; flex-wrap: wrap;  /* 画面が狭いときに改行する */
 }
 
 /* 数字入力とセレクトボックス */
 input[type="number"],
 select {
-    flex: 1;
+    flex: 1; /* 幅を均等に配置 */
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 8px; /* 角を丸くする */
     border: 1px solid #ddd;
 }
 
@@ -155,13 +161,12 @@ button {
     background-color: #ffcc5c;
     color: white;
     border: none;
-    border-radius: 10px;
-    cursor: pointer;
+    border-radius: 10px; /* 角を丸くする */
+    cursor: pointer; /* 指マークにする */
     font-weight: bold;
     font-size: 16px;
-    transition: background-color 0.3s, transform 0.2s;
-    width: auto;
-    /* 幅を固定せず、コンテンツに応じたサイズに */
+    transition: background-color 0.3s, transform 0.2s; /* 背景色と拡大の変化をスムーズに */
+    width: auto;  /* 幅を固定せず、コンテンツに応じたサイズに */
 }
 
 button:hover {
