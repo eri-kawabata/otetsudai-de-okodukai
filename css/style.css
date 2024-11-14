@@ -38,7 +38,7 @@
     overflow-y: auto; /* メニューが長くなった時にスクロール可能にする */
     transition: left 0.3s ease; /* メニューを表示する際にスライドするアニメーション */
     z-index: 999; /* メニューを他の要素の上に表示 */
-    padding-top: 30px; /* メニューの上端に30pxの余白 */
+    padding-top: 50px; /* メニューの上端に50pxの余白 */
 }
 
 /* サイドメニューが表示されるとき */
@@ -178,24 +178,25 @@ button:hover {
 .task-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 10px; /*  10pxの隙間を空ける */
     margin-bottom: 20px;
 }
 
+/* 個々のタスクのカードのデザイン */
 .task-card {
     padding: 15px;
     margin: 5px;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 8px; /* 角を丸く */
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: transform 0.2s;
+    justify-content: space-between; /* カード内で要素を左右に広げる */
+    align-items: center; /* アイテムを上下の真ん中に揃える */
+    transition: transform 0.2s; /* ホバー時に少し拡大する効果 */
 }
 
 .task-card:hover {
-    transform: scale(1.02);
+    transform: scale(1.02); /* カードをホバーしたときに少し拡大する */
 }
 
 /* 完了ボタン */
@@ -203,10 +204,10 @@ button:hover {
     background-color: #ff6f69;
     color: white;
     padding: 5px 10px;
-    border-radius: 8px;
+    border-radius: 8px; /* 角を丸く */
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s; /* 背景色がスムーズに変わる効果 */
 }
 
 .complete-btn:hover {
@@ -215,31 +216,33 @@ button:hover {
 
 /* 完了メッセージポップアップ */
 #completion-message {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: fixed; /* 画面中央に固定 */
+    top: 50%; /* 縦中央 */
+    left: 50%; /* 横中央 */
+    transform: translate(-50%, -50%); /* 中央に位置 */
     padding: 20px;
     background-color: #ffffff00;
     color: white;
     border-radius: 15px;
     font-size: 24px;
-    display: none;
-    animation: popIn 0.3s ease, fadeOut 1s ease 0.3s;
+    display: none; /* 初期状態では非表示 */
+    animation: popIn 0.3s ease, fadeOut 1s ease 0.3s; /* 表示と消えるアニメーション */
 }
 
+/* ポップアップが表示されるときのアニメーション */
 @keyframes popIn {
     0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0; /* 最初は透明 */
+        transform: translate(-50%, -50%) scale(0.5); /* 小さく表示 */
     }
 
     100% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
+        opacity: 1; /* 完全に表示 */
+        transform: translate(-50%, -50%) scale(1); /* 元の大きさに */
     }
 }
 
+/* ポップアップが消えるときのアニメーション */
 @keyframes fadeOut {
     0% {
         opacity: 1;
@@ -252,7 +255,7 @@ button:hover {
     }
 }
 
-/* 完了タスクのスタイル */
+/* 完了済みタスクのデザイン */
 .completed-task-card {
     display: flex;
     flex-direction: column;
@@ -265,10 +268,12 @@ button:hover {
     transition: transform 0.2s;
 }
 
+/* ホバーしたときに少し拡大 */
 .completed-task-card:hover {
     transform: scale(1.02);
 }
 
+/* 完了タスクのタイトル */
 .completed-task-title {
     font-size: 18px;
     font-weight: bold;
@@ -276,6 +281,7 @@ button:hover {
     margin-bottom: 8px;
 }
 
+/* 完了タスクの詳細 */
 .completed-task-details {
     font-size: 14px;
     color: #555;
@@ -292,7 +298,7 @@ button:hover {
     vertical-align: middle;
 }
 
-/* テーマ設定 */
+/* テーマ設定: デフォルト、宇宙、海、動物園、スイーツ */
 body.default-theme {
     background: linear-gradient(135deg, #11225b, #33b9bb, #c5edef, #ed356a);
     background-size: 400% 400%;
@@ -326,14 +332,14 @@ body.sweets-theme {
 /* タブレット向けのデザイン (768px以下) */
 @media (max-width: 768px) {
     .menu-btn {
-        font-size: 16px;
+        font-size: 16px; /* メニューボタンの文字サイズを小さく */
         padding: 8px 16px;
         top: 5px;
         left: 5px;
     }
 
     .container {
-        width: 90%;
+        width: 90%; /* コンテナの幅を90%に広げる */
         padding: 10px;
     }
 
@@ -346,7 +352,7 @@ body.sweets-theme {
     }
 
     .task-form {
-        flex-direction: column;
+        flex-direction: column; /* 縦並びに変更 */
     }
 }
 
@@ -358,7 +364,7 @@ body.sweets-theme {
     }
 
     .container {
-        width: 100%;
+        width: 90%; /* コンテナの幅を画面いっぱいに */
         padding: 5px;
     }
 
