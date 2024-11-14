@@ -7,10 +7,14 @@
 }
 
 /* 背景のグラデーション */
+/* 背景選べるようにしているが念のため */
 body {
     background: linear-gradient(135deg, #11225b, #33b9bb, #c5edef, #ed356a); /* 背景を135度の角度,インスタぽく */
     background-size: 400% 400%;  /* アニメーションのために背景サイズを大きく設定 */
-    animation: gradientBG 10s ease infinite; /* 背景が10秒間でゆっくりと変わるアニメーション */
+    animation: gradientBG 3s ease infinite; 
+    /* 背景が10秒間でゆっくりと変わるアニメーション、
+    easeはゆっくり始まり、真ん中が速くなり、最後にまたゆっくり終わるという動き方、
+    infiniteとすることで無限に繰り返し*/
     color: #333;
     display: flex;
     align-items: center;
@@ -19,19 +23,22 @@ body {
     margin: 10px;
 }
 
-/* 背景のグラデーションが変わるアニメーションの設定 */
 @keyframes gradientBG {
     0% {
-        background-position: 0% 50%; /* 初めは左端から開始 */
+        background-position: 0% 50%;
     }
 
+    /* 左端から開始 */
     50% {
-        background-position: 100% 50%; /* アニメーションの途中で右端に移動 */
+        background-position: 100% 50%;
     }
 
+    /* 画面右端まで移動 */
     100% {
-        background-position: 0% 50%; /* 最後にまた左端に戻る */
+        background-position: 0% 50%;
     }
+
+    /* 左端に戻る */
 }
 
 /* ページの中心に配置されるメインのコンテナ */
@@ -231,6 +238,10 @@ button:hover {
 /* 各テーマごとの背景設定 */
 body.default-theme {
     background: linear-gradient(135deg, #11225b, #33b9bb, #c5edef, #ed356a);
+        /* 背景を135度の角度,インスタぽく */
+        background-size: 400% 400%;
+        /* アニメーションのために背景サイズを大きく設定 */
+        animation: gradientBG 10s ease infinite;
 }
 
 body.space-theme {
