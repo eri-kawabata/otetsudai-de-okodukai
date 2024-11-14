@@ -12,6 +12,8 @@
 </head>
 
 <body>
+    <!-- ホバー音のオーディオ -->
+    <audio id="hoverSound" src="./audio/hover.mp3"></audio>
     <!-- メニューボタン -->
     <button class="menu-btn" onclick="toggleMenu()">&#9776;</button>
 
@@ -47,6 +49,7 @@
             </select>
             <input type="number" id="task-reward" placeholder="おこづかい (円)" required>
             <button type="button" onclick="addTask()">追加</button>
+            <audio id="clickSound" src="./audio/addtask.mp3"></audio>
         </div>
         <h2>やることリスト</h2>
         <div id="task-list" class="task-list"></div>
@@ -71,6 +74,8 @@
     <!-- 完了メッセージのポップアップ -->
     <div id="completion-message">
         <img src="./image/good.png" alt="お疲れさま" class="completion-icon">
+        <!-- 完了効果音のファイル -->
+        <audio id="completeSound" src="./audio/complete.mp3"></audio>
     </div>
 
     <script src="./js/script.js"></script>

@@ -3,6 +3,13 @@ function toggleMenu() {
     sideMenu.classList.toggle("open"); // メニューの開閉を切り替え
 }
 
+// ホバー時に効果音を再生する関数
+function playHoverSound() {
+    const hoverSound = document.getElementById('hoverSound');
+    hoverSound.currentTime = 0; // 再生位置をリセットして連続再生可能に
+    hoverSound.play();
+}
+
 // タスクの内容に応じてアイコンの画像を表示する
 function getTaskIcon(taskName) {
     if (taskName === "掃除") return './image/souji.png';
@@ -18,23 +25,28 @@ let tasks = [];  // 「未完了」のタスクリスト
 let completedTasks = [];  // 「完了した」タスクリスト
 let totalEarnings = 0;  // 合計のおこづかい
 
-// 新しいタスクを追加する関数
+// 「追加」ボタンを押すと音が鳴るように
+function playClickSound() {
+    const clickSound = document.getElementById('clickSound');
+    clickSound.play();
+}
+
+// タスクを追加する関数
 function addTask() {
-    // 「お手伝いの内容」と「おこづかい金額」を取得
     const taskName = document.getElementById('task-name').value;
     const taskReward = parseInt(document.getElementById('task-reward').value);
 
-    // もし内容と金額が正しく入力されていれば、タスクリストに追加します
     if (taskName && !isNaN(taskReward)) {
-        const task = { name: taskName, reward: taskReward };  // 新しいタスクをオブジェクトとして作成
-        tasks.push(task); // タスクリストに追加
-        saveData();  // 追加後のデータを保存（次回のページ読み込みでも表示されるように）
+        const task = { name: taskName, reward: taskReward };
+        tasks.push(task);
+        saveData();
+        updateTaskList();
+        document.getElementById('task-name').value = '';
+        document.getElementById('task-reward').value = '';
 
-        updateTaskList();  // 画面のタスクリストを更新
-        document.getElementById('task-name').value = ''; // 入力フィールドをクリア（次の入力のため）
-        document.getElementById('task-reward').value = ''; // 報酬フィールドもクリア
+        // クリック音を再生
+        playClickSound();
     } else {
-        // 内容と金額が正しく入力されていない場合は、メッセージを表示
         alert('お手伝いの内容とおこづかいをちゃんといれてね！');
     }
 }
@@ -56,8 +68,15 @@ function updateTaskList() {
                 <img src="./image/check.png" alt="完了" class="task-icon"> おわった！
             </span>
         `;
+        taskCard.addEventListener('mouseover', playHoverSound); // ホバー時の音追加
         taskList.appendChild(taskCard);  // タスクリストにカードを追加
     });
+}
+
+// 完了ボタンを押すと完了音が鳴るようにする関数
+function playCompleteSound() {
+    const completeSound = document.getElementById('completeSound');
+    completeSound.play();
 }
 
 // タスクを完了リストに移動し、完了日を追加
@@ -69,6 +88,7 @@ function completeTask(index) {
     completedTasks.push(task);  // 完了済みタスクリストに追加
     totalEarnings += task.reward;   // 合計おこづかいを更新
 
+    playCompleteSound();    // 完了音を再生
     showCompletionMessage();  // 完了メッセージを表示
     saveData();  // データを保存
     updateTaskList();  // 未完了タスクリストを更新
@@ -188,4 +208,5 @@ window.onload = () => {
     const savedTheme = localStorage.getItem('selectedTheme') || 'default';
     document.getElementById('theme').value = savedTheme;
     changeTheme();
+    updateTaskList(); // ホバー効果音をタスクリストにも反映
 };
