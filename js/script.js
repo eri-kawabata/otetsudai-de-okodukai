@@ -1,4 +1,8 @@
-// タスクに応じたアイコンを取得する関数
+function toggleMenu() {
+    const sideMenu = document.getElementById("sideMenu");
+    sideMenu.classList.toggle("open"); // メニューの開閉を切り替え
+}
+
 // タスクの内容に応じてアイコンの画像を表示する
 function getTaskIcon(taskName) {
     if (taskName === "掃除") return './image/souji.png';

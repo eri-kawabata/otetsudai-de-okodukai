@@ -2,10 +2,82 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* box-sizing を border-box にすると、幅や高さの計算がしやすくなる */
+    box-sizing: border-box;
     font-family: 'Arial', sans-serif;
 }
 
+/* メニューボタン */
+.menu-btn {
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: #ffffffbe;
+    color: rgb(80, 165, 255);
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+/* メニューボタンのホバー時のスタイル */
+.menu-btn:hover {
+    background-color: #fffefe;  /* 背景色をグレーに変更 */
+    color: rgb(255, 155, 155);  /* テキスト色は変更せずそのまま */
+}
+
+/* サイドメニューのスタイル */
+.side-menu {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #333333d0;
+    color: white;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    z-index: 999;
+    padding-top: 20px;
+}
+
+/* サイドメニューが表示されるとき */
+.side-menu.open {
+    left: 0;
+}
+
+/* メニューを閉じるボタン */
+.close-btn {
+    font-size: 20px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    display: block;
+}
+
+/* メニュー項目のスタイル */
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background 0.3s;
+}
+
+.menu-item:hover {
+    background-color: #555;
+}
+
+.menu-item i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+/* 全体のスタイル設定 */
 body {
     color: #333;
     display: flex;
@@ -20,27 +92,23 @@ body {
         background-position: 0% 50%;
     }
 
-    /* 左端から開始 */
     50% {
         background-position: 100% 50%;
     }
 
-    /* 画面右端まで移動 */
     100% {
         background-position: 0% 50%;
     }
-
-    /* 左端に戻る */
 }
 
-/* ページの中心に配置されるメインのコンテナ */
+/* メインコンテナ */
 .container {
-    width: 100%; /* コンテナの横幅を100%に設定 */
-    max-width: 600px; /* コンテナの最大幅を600pxに制限 */
-    background-color: #ffffffce; /* 白色に少し透明な背景を設定 */
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffffce;
     padding: 15px;
-    border-radius: 15px; /* 角を丸くする */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* 少し影をつけて立体感を出す */
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     text-align: center;
 }
 
@@ -57,7 +125,6 @@ h2 {
     margin-bottom: 10px;
 }
 
-/* 月ごとのおこづかいの合計表示エリア */
 .annual-earnings,
 .current-month {
     font-size: 18px;
@@ -65,144 +132,138 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* タスク入力フォームのスタイル */
+/* タスク入力フォーム */
 .task-form {
-    display: flex; /* フォームの要素を横並びにする */
-    gap: 10px; /* 要素間の間隔を10pxに設定 */
+    display: flex;
+    gap: 10px;
     margin-bottom: 20px;
-    flex-wrap: wrap; /* 画面が狭い時に自動で改行する設定 */
+    flex-wrap: wrap;
 }
 
-/* 数字入力とセレクトボックスのスタイル */
+/* 数字入力とセレクトボックス */
 input[type="number"],
 select {
-    flex: 1; /* 要素が均等に幅を取るようにする */
+    flex: 1;
     padding: 10px;
-    border-radius: 8px; /* 角を丸く */
+    border-radius: 8px;
     border: 1px solid #ddd;
 }
 
-/* ボタンの基本スタイル */
+/* ボタンスタイル */
 button {
     padding: 10px 20px;
     background-color: #ffcc5c;
     color: white;
     border: none;
-    border-radius: 10px; /* 角を丸く */
-    cursor: pointer; /* マウスを乗せるとカーソルが指の形に */
+    border-radius: 10px;
+    cursor: pointer;
     font-weight: bold;
     font-size: 16px;
-    transition: background-color 0.3s, transform 0.2s; /* ホバー時の色と拡大の変化をスムーズに */
+    transition: background-color 0.3s, transform 0.2s;
+    width: auto;
+    /* 幅を固定せず、コンテンツに応じたサイズに */
 }
 
-/* ボタンにマウスオーバーしたときのスタイル */
 button:hover {
-    background-color: #ff6f69; /* ホバー時に背景色を赤色に */
-    transform: scale(1.05); /* 少し拡大する */
+    background-color: #ff6f69;
+    transform: scale(1.05);
 }
 
-/* タスクのリスト全体のレイアウト */
+/* タスクリスト */
 .task-list {
     display: flex;
-    flex-direction: column; /* 縦に並べる設定 */
-    gap: 10px; /* 各タスクの間隔 */
+    flex-direction: column;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
-/* タスクごとのカードのスタイル */
 .task-card {
     padding: 15px;
     margin: 5px;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
-    border-radius: 8px; /* 角を丸く */
+    border-radius: 8px;
     display: flex;
-    justify-content: space-between; /* 要素の間隔を等しく広げる */
+    justify-content: space-between;
     align-items: center;
-    transition: transform 0.2s; /* ホバー時に少し大きくする */
+    transition: transform 0.2s;
 }
 
-/* タスクカードにマウスオーバーしたときのスタイル */
 .task-card:hover {
-    transform: scale(1.02); /* 少し拡大 */
+    transform: scale(1.02);
 }
 
-/* 完了ボタンのスタイル */
+/* 完了ボタン */
 .complete-btn {
     background-color: #ff6f69;
     color: white;
     padding: 5px 10px;
-    border-radius: 8px; /* 角を丸く */
+    border-radius: 8px;
     font-weight: bold;
-    cursor: pointer; /* 指の形のカーソル */
-    transition: background-color 0.3s; /* ホバー時の色変化をスムーズに */
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-/* 完了ボタンにマウスオーバーしたときの色 */
 .complete-btn:hover {
-    background-color: #ffcc5c; /* マウスオーバー時に黄色に */
+    background-color: #ffcc5c;
 }
 
 /* 完了メッセージポップアップ */
 #completion-message {
-    position: fixed; /* 画面上の固定位置に表示 */
-    top: 50%; /* 画面の垂直中央 */
-    left: 50%; /* 画面の水平中央 */
-    transform: translate(-50%, -50%); /* 完全に中央揃え */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     padding: 20px;
-    background-color: #ffffff00; /* 一旦透明、背景色を入れたい場合変える */
+    background-color: #ffffff00;
     color: white;
-    border-radius: 15px; /* 角を丸く */
-    font-size: 24px; /* テキストを大きく */
-    display: none; /* デフォルトは非表示に */
-    animation: popIn 0.3s ease, fadeOut 1s ease 0.3s; /* 表示と消えるアニメーション */
+    border-radius: 15px;
+    font-size: 24px;
+    display: none;
+    animation: popIn 0.3s ease, fadeOut 1s ease 0.3s;
 }
 
-/* ポップアップが表示されるときの拡大アニメーション */
 @keyframes popIn {
     0% {
-        opacity: 0;  /* 最初は透明 */
-        transform: translate(-50%, -50%) scale(0.5); /* 小さく始まる */
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
     }
 
     100% {
-        opacity: 1; /* 表示 */
-        transform: translate(-50%, -50%) scale(1); /* 元のサイズに */
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
     }
 }
 
-/* ポップアップが消えるときの縮小アニメーション */
 @keyframes fadeOut {
     0% {
-        opacity: 1; /* 表示 */
-        transform: translate(-50%, -50%) scale(1); /* 元のサイズ */
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
     }
 
     100% {
-        opacity: 0; /* 徐々に透明に */
-        transform: translate(-50%, -50%) scale(0.5); /* 小さくなる */
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
     }
 }
 
-/* 完了したタスクのスタイル */
+/* 完了タスクのスタイル */
 .completed-task-card {
     display: flex;
-    flex-direction: column; /* タスクの詳細を縦に並べる */
-    align-items: flex-start; /* 左揃えに */
+    flex-direction: column;
+    align-items: flex-start;
     padding: 15px;
     background-color: #e6f7ff;
     border: 1px solid #d4e6f1;
-    border-radius: 8px; /* 角を丸く */
+    border-radius: 8px;
     margin-bottom: 10px;
-    transition: transform 0.2s; /* ホバー時に少し大きくする */
+    transition: transform 0.2s;
 }
 
-/* 完了したタスクにマウスオーバーしたとき */
 .completed-task-card:hover {
-    transform: scale(1.02); /* 少し拡大 */
+    transform: scale(1.02);
 }
 
-/* 完了したタスクのタイトル */
 .completed-task-title {
     font-size: 18px;
     font-weight: bold;
@@ -210,12 +271,11 @@ button:hover {
     margin-bottom: 8px;
 }
 
-/* 完了日と報酬のスタイル */
 .completed-task-details {
     font-size: 14px;
     color: #555;
     display: flex;
-    justify-content: space-between; /* 文字の間隔を広げる */
+    justify-content: space-between;
     width: 100%;
 }
 
@@ -224,16 +284,14 @@ button:hover {
     width: 32px;
     height: 32px;
     margin-right: 10px;
-    vertical-align: middle;  /* 文字と縦位置を合わせる */
+    vertical-align: middle;
 }
 
-/* 各テーマごとの背景設定 */
+/* テーマ設定 */
 body.default-theme {
     background: linear-gradient(135deg, #11225b, #33b9bb, #c5edef, #ed356a);
-        /* 背景を135度の角度,インスタぽく */
-        background-size: 400% 400%;
-        /* アニメーションのために背景サイズを大きく設定 */
-        animation: gradientBG 10s ease infinite;
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
 }
 
 body.space-theme {
@@ -260,8 +318,15 @@ body.sweets-theme {
     color: #ff69b4;
 }
 
-/* タブレット向け768px以下の画面幅用のモバイル対応デザイン */
+/* タブレット向けのデザイン (768px以下) */
 @media (max-width: 768px) {
+    .menu-btn {
+        font-size: 16px;
+        padding: 8px 16px;
+        top: 5px;
+        left: 5px;
+    }
+
     .container {
         width: 90%;
         padding: 10px;
@@ -276,16 +341,17 @@ body.sweets-theme {
     }
 
     .task-form {
-        flex-direction: column; /* フォームを縦に並べる */
-    }
-
-    button {
-        width: 100%; /* ボタンの幅を100%に */
+        flex-direction: column;
     }
 }
 
-/* スマホ向け480px以下の小さい画面幅用 */
+/* スマホ向けのデザイン (480px以下) */
 @media (max-width: 480px) {
+    .menu-btn {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
     .container {
         width: 100%;
         padding: 5px;

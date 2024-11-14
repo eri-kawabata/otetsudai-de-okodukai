@@ -7,23 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>お手伝いでおこづかい</title>
     <link rel="stylesheet" href="./css/style.css">
+    <!-- Font AwesomeのCSSをリンク -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
+    <!-- メニューボタン -->
+    <button class="menu-btn" onclick="toggleMenu()">&#9776;</button>
+
+    <!-- サイドメニュー -->
+    <!-- バツ印は消している -->
+    <div class="side-menu" id="sideMenu">
+        <button class="close-btn" onclick="toggleMenu()"></button>
+        <a href="/calendar" class="menu-item">
+            <i class="fas fa-calendar-alt"></i> カレンダー</a>
+        <a href="/mypage" class="menu-item">
+            <i class="fas fa-user"></i> マイページ</a>
+        <a href="/login" class="menu-item">
+            <i class="fas fa-sign-in-alt"></i> ログイン</a>
+        <a href="/settings" class="menu-item">
+            <i class="fas fa-cog"></i> 設定</a>
+    </div>
+
     <!-- コンテンツを中央に配置するためのコンテナ -->
     <div class="container">
-        <!-- メインタイトル -->
         <h1>お手伝いでおこづかい</h1>
-
-        <!-- 現在の月を表示するためのセクション -->
         <div class="current-month">
-            <h2><span id="current-month"></span></h2> <!-- JavaScriptで現在の月を設定 -->
+            <h2><span id="current-month"></span></h2>
         </div>
-
-        <!-- 新しいタスクの追加フォーム -->
         <h2>新しいお手伝い</h2>
         <div class="task-form">
-            <!-- お手伝いの内容を選ぶドロップダウンリスト -->
             <select id="task-name" required>
                 <option value="" disabled selected>お手伝いの内容を選んでね</option>
                 <option value="掃除">掃除</option>
@@ -32,43 +45,27 @@
                 <option value="洗濯">洗濯</option>
                 <option value="買い物">買い物</option>
             </select>
-
-            <!-- お手伝いの報酬を入力する数値フィールド -->
             <input type="number" id="task-reward" placeholder="おこづかい (円)" required>
-            <!-- タスクを追加するボタン -->
             <button type="button" onclick="addTask()">追加</button>
         </div>
-
-        <!-- 未完了タスクリストの見出し -->
         <h2>やることリスト</h2>
-        <!-- JavaScriptで追加されるタスク項目のコンテナ -->
         <div id="task-list" class="task-list"></div>
-
-        <!-- 完了したタスクリストの見出し -->
         <h2>おわったことリスト</h2>
-        <!-- 完了済みタスクが表示されるリスト -->
         <div id="completed-task-list" class="task-list"></div>
-
-        <!-- 合計おこづかいの表示 -->
         <h2>もらったおこづかい: <span id="total-earnings">0</span> 円</h2>
-
-        <!-- 年間合計おこづかいの表示セクション -->
         <div class="annual-earnings">
             <h2>今までのおこづかい合計: <span id="annual-earnings">0</span> 円</h2>
         </div>
-
-        <!-- テーマ選択ドロップダウン -->
-<div class="theme-selector">
-    <label for="theme">好きな背景をえらんでね:</label>
-    <select id="theme" onchange="changeTheme()">
-        <option value="default">デフォルト</option>
-        <option value="space">宇宙</option>
-        <option value="ocean">海</option>
-        <option value="zoo">動物園</option>
-        <option value="sweets">スイーツ</option>
-    </select>
-</div>
-
+        <div class="theme-selector">
+            <label for="theme">好きな背景をえらんでね:</label>
+            <select id="theme" onchange="changeTheme()">
+                <option value="default">デフォルト</option>
+                <option value="space">宇宙</option>
+                <option value="ocean">海</option>
+                <option value="zoo">動物園</option>
+                <option value="sweets">スイーツ</option>
+            </select>
+        </div>
     </div>
 
     <!-- 完了メッセージのポップアップ -->
