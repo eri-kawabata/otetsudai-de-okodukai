@@ -117,17 +117,30 @@ body {
 
 /* メインタイトルのスタイル */
 h1 {
-    font-size: 28px;
-    color: #ff6f69;
+    font-size: 36px;
+    color: #0055ff;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);/* 文字の影で立体感を出す */
+    letter-spacing: 2px;/* 文字の間隔を広くして読みやすく */
+    background: linear-gradient(135deg, #0e76ff, #ff79ff);/* 文字にグラデーション */
+    -webkit-background-clip: text;  /* 文字だけに背景を反映 */
+    color: transparent;  /* 文字の色を透明に */
+    margin-top: 20px;
 }
 
 /* 見出しのスタイル */
 h2 {
-    font-size: 20px;
-    color: #ffcc5c;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    font-size: 24px;
+        /* h1より少し小さめのサイズ */
+        color: #0055ff;
+        /* 柔らかい黄色の色調 */
+        margin-top: 20px;
+        margin-bottom: 10px;
+        letter-spacing: 1px;  /* 文字の間隔を少し広めに */
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);  /* ソフトな影を付けて立体感 */
+        background: linear-gradient(135deg, #ff8fec, #ff352e);  /* グラデーション */
+        -webkit-background-clip: text;  /* 文字のみに背景を反映 */
+        color: transparent;  /* 文字色を透明にし、グラデーションのみ表示 */
 }
 
 /* 年間のおこづかい合計と今月の表示エリア */
