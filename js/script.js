@@ -166,7 +166,7 @@ function loadData() {
     updateAnnualEarnings();  // 年間おこづかいを更新
 }
 
-// 合計おこづかいを更新
+// 合計おこづかい更新
 function updateTotalEarnings() {
     document.getElementById('total-earnings').textContent = totalEarnings;
 }
