@@ -6,15 +6,7 @@
     font-family: 'Arial', sans-serif;
 }
 
-/* 背景のグラデーション */
-/* 背景選べるようにしているが念のため */
 body {
-    background: linear-gradient(135deg, #11225b, #33b9bb, #c5edef, #ed356a); /* 背景を135度の角度,インスタぽく */
-    background-size: 400% 400%;  /* アニメーションのために背景サイズを大きく設定 */
-    animation: gradientBG 3s ease infinite; 
-    /* 背景が10秒間でゆっくりと変わるアニメーション、
-    easeはゆっくり始まり、真ん中が速くなり、最後にまたゆっくり終わるという動き方、
-    infiniteとすることで無限に繰り返し*/
     color: #333;
     display: flex;
     align-items: center;
