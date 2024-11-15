@@ -319,25 +319,25 @@ body.default-theme {
 }
 
 body.space-theme {
-    background: url('./space2.jpg') no-repeat center center fixed;
+    background: url('../image/space2.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #000000;
 }
 
 body.ocean-theme {
-    background: url('./see.png') no-repeat center center fixed;
+    background: url('../image/see.png') no-repeat center center fixed;
     background-size: cover;
     color: #1559e0;
 }
 
 body.zoo-theme {
-    background: url('./zoo.png') no-repeat center center fixed;
+    background: url('../image/zoo.png') no-repeat center center fixed;
     background-size: cover;
     color: #333;
 }
 
 body.sweets-theme {
-    background: url('./sweets.jpg') no-repeat center center fixed;
+    background: url('../image/sweets.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #ff69b4;
 }

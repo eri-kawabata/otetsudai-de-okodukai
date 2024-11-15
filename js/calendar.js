@@ -120,5 +120,4 @@ function drawStars() {
 
 drawStars();
 
-
 window.onload = () => generateCalendar();
