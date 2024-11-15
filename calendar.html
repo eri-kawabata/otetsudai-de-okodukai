@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カレンダー</title>
+    <link rel="stylesheet" href="./css/calendar.css">
+</head>
+
+<body>
+    <div class="background">
+        <canvas id="starfield"></canvas>
+    </div>
+    <header>
+        <button class="back-btn" onclick="window.location.href='index.html'">Back</button>
+    </header>
+    <main>
+        <div class="calendar-container">
+            <div class="calendar-navigation">
+                <button id="prev-month" class="month-btn">← 前月</button>
+                <span id="current-month" class="current-month"></span>
+                <button id="next-month" class="month-btn">翌月 →</button>
+            </div>
+            <div class="calendar-header">
+                <div>日</div>
+                <div>月</div>
+                <div>火</div>
+                <div>水</div>
+                <div>木</div>
+                <div>金</div>
+                <div>土</div>
+            </div>
+            <div id="calendar"></div>
+        </div>
+        <div id="task-details" class="task-details">
+            <h2 id="selected-date">選択された日付: </h2>
+            <div id="tasks-for-date"></div>
+        </div>
+    </main>
+    <script src="./js/calendar.js"></script>
+    <script src="./js/starfield.js"></script>
+</body>
+
+</html>
