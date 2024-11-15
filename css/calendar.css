@@ -111,20 +111,22 @@ header {
     max-width: 900px;
     margin-top: 20px;
     padding: 20px;
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px); /* 背景をぼかし */
+    background: rgba(255, 255, 255, 0.1); /* 背景を薄い透明な白色に設定 */
     border-radius: 20px;
     color: #ffffff;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* 外側に薄い影を追加して浮き上がるように見せる */
     text-align: center;
 }
 
+/* タスク詳細内の見出し（タイトル）のスタイル */
 .task-details h2 {
     margin-bottom: 10px;
     font-size: 20px;
     color: #ffffff;
 }
 
+/* 各タスクのアイテムのスタイル */
 .task-item {
     margin: 5px 0;
     padding: 10px;
@@ -144,29 +146,31 @@ header {
 
 /* 背景の星アニメーション */
 .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
+    position: fixed; /* 背景を画面に固定し、スクロールしても動かないようにする */
+    top: 0; /* 背景の上端を画面の上端に合わせる */
+    left: 0; /* 背景の左端を画面の左端に合わせる */
+    width: 100%; /* 背景の横幅を画面全体に広げる */
+    height: 100%; /* 背景の高さを画面全体に広げる */
+    z-index: -1; /* 背景を一番後ろに配置して他の要素の邪魔をしないようにする */
+    overflow: hidden; /* 背景がはみ出さないように、余分な部分を隠す */
 }
 
+/* 星を描画するキャンバスのスタイル */
 canvas#starfield {
-    width: 100%;
-    height: 100%;
-    display: block;
+    width: 100%;  /* キャンバスの横幅を画面全体に設定 */
+    height: 100%; /* キャンバスの高さを画面全体に設定 */
+    display: block;  /* キャンバスをブロック要素として表示（余計なスペースを消す） */
 }
 
-/* カレンダーのナビゲーション */
+/* カレンダーのナビゲーション（前月・翌月） */
 .calendar-navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+    display: flex; /* フレックスボックスを使用して配置を調整 */
+    justify-content: space-between; /* 子要素を左右に均等に配置 */
+    align-items: center; /* 子要素を垂直方向に中央揃え */
+    margin-bottom: 10px; /* ナビゲーションの下に10pxの余白を追加 */
 }
 
+/* 月移動ボタン（前月・次月）のスタイル */
 .month-btn {
     font-size: 16px;
     padding: 10px 20px;
@@ -175,17 +179,19 @@ canvas#starfield {
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /* ホバー時のアニメーションを滑らかに設定 */
 }
 
+/* 月移動ボタン（前月・次月）をホバーした時のスタイル */
 .month-btn:hover {
     background: rgba(255, 255, 255, 0.5);
     color: #333333;
 }
 
+/* 現在の月を表示する部分のスタイル */
 .current-month {
     font-size: 20px;
     font-weight: bold;
     color: #fdfdfd;
-    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6); /* テキストに黒いぼんやりとした影を追加 */
 }
